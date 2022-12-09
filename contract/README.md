@@ -1,1 +1,1 @@
-xcontract-starter
+xcontract-counter

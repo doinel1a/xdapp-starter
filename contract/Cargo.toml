@@ -1,5 +1,5 @@
 [workspace]
 members = [
-  "xcontract",
-  "xcontract/meta"
+  "counter",
+  "counter/meta"
 ]

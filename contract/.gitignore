@@ -1,5 +1,5 @@
 # production
 /target
-/xcontract/output
-/xcontract/wallet/dev.pem
-/xcontract/wasm
+/counter/output
+/counter/wallet/dev.pem
+/counter/wasm
