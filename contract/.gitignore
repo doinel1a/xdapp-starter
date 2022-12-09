@@ -1,0 +1,5 @@
+# production
+/target
+/xcontract/output
+/xcontract/wallet/dev.pem
+/xcontract/wasm

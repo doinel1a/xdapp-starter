@@ -1,0 +1,17 @@
+[package]
+name = "xcontract-meta"
+version = "0.0.1"
+authors = ["Doinel Atanasiu <doinel1atanasiu@gmail.com>"]
+edition = "2018"
+repository = "https://github.com/doinel1a/xcontract-base"
+license = "MIT"
+publish = false
+
+[dependencies.xcontract]
+path = ".."
+
+[dependencies.elrond-wasm]
+version = "0.34.0"
+
+[dependencies.elrond-wasm-debug]
+version = "0.34.0"
