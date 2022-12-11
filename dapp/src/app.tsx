@@ -5,12 +5,17 @@ import {
 	TransactionsToastList
 } from '@elrondnetwork/dapp-core/UI';
 import { DappProvider } from '@elrondnetwork/dapp-core/wrappers';
-import React from 'react';
+import React, { lazy } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Layout from './components/layout/layout';
-import { routeNames, routes } from './config/routes';
-import Login from './pages/login';
+import { routeNames } from './config/routes';
+import Home from './pages/home';
+
+const Login = lazy(() => wait(1000).then(() => import('./pages/login')));
+const Dashboard = lazy(() =>
+	wait(1000).then(() => import('./pages/dashboard'))
+);
 
 export default function App() {
 	return (
@@ -21,17 +26,21 @@ export default function App() {
 					<NotificationModal />
 					<SignTransactionsModals />
 					<Routes>
+						<Route path={routeNames.home} element={<Home />} />
 						<Route path={routeNames.login} element={<Login />} />
-						{routes.map((route, index) => (
-							<Route
-								path={route.path}
-								key={'route-key-' + index}
-								element={<route.component />}
-							/>
-						))}
+						<Route
+							path={routeNames.dashboard}
+							element={<Dashboard />}
+						/>
 					</Routes>
 				</Layout>
 			</DappProvider>
 		</BrowserRouter>
 	);
+}
+
+function wait(time: number) {
+	return new Promise((resolve) => {
+		setTimeout(resolve, time);
+	});
 }
