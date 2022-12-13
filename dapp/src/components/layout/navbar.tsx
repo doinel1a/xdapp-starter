@@ -1,11 +1,11 @@
 import { useGetIsLoggedIn } from '@elrondnetwork/dapp-core/hooks';
 import { logout } from '@elrondnetwork/dapp-core/utils';
 import { faLock, faUnlock } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { routeNames } from '../../config/routes';
+import Button from '../button';
 
 export default function Navbar() {
 	const isLoggedIn = useGetIsLoggedIn();
@@ -20,26 +20,19 @@ export default function Navbar() {
 				xDapp Starter
 			</Link>
 			{!isLoggedIn ? (
-				<Link
+				<Button
 					title='Login with your wallet'
+					text='Login'
+					icon={faUnlock}
 					to={routeNames.login}
-					className='px-3 py-2 rounded-lg bg-accent-primary
-								transition-colors hover:bg-accent-primary-state focus:bg-accent-primary-state'
-				>
-					Login &nbsp;
-					<FontAwesomeIcon icon={faUnlock} />
-				</Link>
+				/>
 			) : (
-				<button
-					type='button'
+				<Button
 					title='Logout dapp'
-					className='px-3 py-2 rounded-lg bg-accent-primary
-				transition-colors hover:bg-accent-primary-state focus:bg-accent-primary-state'
+					text='Logout'
+					icon={faLock}
 					onClick={() => logout()}
-				>
-					Logout &nbsp;
-					<FontAwesomeIcon icon={faLock} />
-				</button>
+				/>
 			)}
 		</nav>
 	);

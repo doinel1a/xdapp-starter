@@ -1,18 +1,66 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface IButton {
+	title: string;
 	text: string;
-	onClick: React.MouseEventHandler<HTMLButtonElement>;
+	CSS?: string;
+	icon?: IconProp;
+	to?: string;
+	onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export default function Button({ text, onClick }: IButton) {
+export default function Button({
+	title,
+	text,
+	CSS,
+	icon,
+	to,
+	onClick
+}: IButton) {
+	if (to) {
+		return (
+			<Link
+				title='Login with your wallet'
+				to={to}
+				className={`${buttonStyle} ${CSS ?? ''}`}
+			>
+				Login
+				{icon ? (
+					<>
+						&nbsp; <FontAwesomeIcon icon={icon} />
+					</>
+				) : (
+					<></>
+				)}
+			</Link>
+		);
+	}
+
 	return (
 		<button
 			type='button'
-			className='w-16 px-4 py-2 text-xl text-color rounded-xl bg-accent-primary hover:bg-accent-primary-state focus:bg-accent-primary-state transition-colors'
+			title={title}
+			className={`${buttonStyle} ${CSS ?? ''}`}
 			onClick={onClick}
 		>
 			<span>{text}</span>
+			{icon ? (
+				<>
+					&nbsp; <FontAwesomeIcon icon={icon} />
+				</>
+			) : (
+				<></>
+			)}
 		</button>
 	);
 }
+
+const buttonStyle = `
+	px-3 py-2 
+	rounded-lg 
+	bg-accent-primary transition-colors 
+	hover:bg-accent-primary-state focus:bg-accent-primary-state
+`;
