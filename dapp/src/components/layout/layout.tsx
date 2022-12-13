@@ -2,6 +2,7 @@ import { AuthenticatedRoutesWrapper } from '@elrondnetwork/dapp-core/wrappers';
 import React, { Suspense } from 'react';
 
 import { routeNames, routes } from '../../config/routes';
+import Loader from '../loader';
 import Footer from './footer';
 import Navbar from './navbar';
 
@@ -20,9 +21,7 @@ export default function Layout({ children }: ILayoutProps) {
 					routes={routes}
 					unlockRoute={routeNames.login}
 				>
-					<Suspense fallback={<h1>LOADING...</h1>}>
-						{children}
-					</Suspense>
+					<Suspense fallback={<Loader />}>{children}</Suspense>
 				</AuthenticatedRoutesWrapper>
 			</main>
 			<Footer />
