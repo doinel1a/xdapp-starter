@@ -19,8 +19,16 @@ export default function Counter({
 			<section className='w-96 h-72 container flex flex-col justify-between items-center py-10 rounded-xl border border-tertiary bg-secondary'>
 				<h2 className='text-6xl'>{counter}</h2>
 				<div className='flex gap-x-5'>
-					<Button text='+ 1' onClick={() => onIncrement()} />
-					<Button text='- 1' onClick={() => onDecrement()} />
+					<Button
+						title='Increment counter'
+						text='+ 1'
+						onClick={() => onIncrement()}
+					/>
+					<Button
+						title='Decrement counter'
+						text='- 1'
+						onClick={() => onDecrement()}
+					/>
 				</div>
 			</section>
 		</>
